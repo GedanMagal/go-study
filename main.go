@@ -10,8 +10,22 @@ func main() {
 	contaGedan := contas.ContaCorrente{Titular: "Gedan", Saldo: 150000}
 	contaElen := contas.ContaCorrente{Titular: "Elen", Saldo: 3000}
 
+	// transferencia de saldo suficiente
 	status := contaGedan.Transferir(150000, &contaElen)
 
+	fmt.Println("Status da transferencia: ", status)
+	fmt.Println(contaGedan)
+	fmt.Println(contaElen)
+
+	// transferencia de saldo insuficiente
+	status = contaGedan.Transferir(1000, &contaElen)
+
+	fmt.Println("Status da transferencia: ", status)
+	fmt.Println(contaGedan)
+	fmt.Println(contaElen)
+
+	// transferencia de saldo suficiente
+	status = contaElen.Transferir(8000, &contaGedan)
 	fmt.Println("Status da transferencia: ", status)
 	fmt.Println(contaGedan)
 	fmt.Println(contaElen)
