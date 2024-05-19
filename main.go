@@ -2,13 +2,16 @@ package main
 
 import (
 	"aluraBank/contas"
+	"aluraBank/pessoas/clientes"
 	"fmt"
 )
 
 func main() {
 
-	contaGedan := contas.ContaCorrente{Titular: "Gedan", Saldo: 150000}
-	contaElen := contas.ContaCorrente{Titular: "Elen", Saldo: 3000}
+	titularGedan := clientes.Titular{Nome: "Gedan", Cpf: "456.534.266.10", Profissao: "Eng. Software"}
+	titularElen := clientes.Titular{Nome: "Elen", Cpf: "432.965.444.12", Profissao: "Professor"}
+	contaGedan := contas.ContaCorrente{Titular: titularGedan, Saldo: 150000}
+	contaElen := contas.ContaCorrente{Titular: titularElen, Saldo: 3000}
 
 	// transferencia de saldo suficiente
 	status := contaGedan.Transferir(150000, &contaElen)

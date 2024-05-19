@@ -1,7 +1,11 @@
 package contas
 
+import (
+	cliente "aluraBank/pessoas/clientes"
+)
+
 type ContaCorrente struct {
-	Titular       string
+	Titular       cliente.Titular
 	NumeroAgencia int
 	NumeroConta   int
 	Saldo         float64
