@@ -10,8 +10,11 @@ func main() {
 
 	titularGedan := clientes.Titular{Nome: "Gedan", Cpf: "456.534.266.10", Profissao: "Eng. Software"}
 	titularElen := clientes.Titular{Nome: "Elen", Cpf: "432.965.444.12", Profissao: "Professor"}
-	contaGedan := contas.ContaCorrente{Titular: titularGedan, Saldo: 150000}
-	contaElen := contas.ContaCorrente{Titular: titularElen, Saldo: 3000}
+	contaGedan := contas.ContaCorrente{Titular: titularGedan}
+	contaElen := contas.ContaCorrente{Titular: titularElen}
+
+	contaGedan.Depositar(2000)
+	contaGedan.Depositar(3000)
 
 	// transferencia de saldo suficiente
 	status := contaGedan.Transferir(150000, &contaElen)
@@ -32,6 +35,38 @@ func main() {
 	fmt.Println("Status da transferencia: ", status)
 	fmt.Println(contaGedan)
 	fmt.Println(contaElen)
+
+	// transferencia de saldo suficiente
+	fmt.Println("Saldo Elen: ", contaElen.GetSaldo())
+	fmt.Println("Saldo Gedan: ", contaGedan.GetSaldo())
+
+	// Conta poupança
+
+	gedanPoupanca := contas.ContaPoupanca{Titular: titularGedan}
+	fmt.Println("Conta poupança:", gedanPoupanca)
+
+	gedanPoupanca.Depositar(100)
+	fmt.Println("Poupança:", gedanPoupanca)
+	fmt.Println("Saque:", gedanPoupanca.Sacar(55))
+	fmt.Println("Saldo:", gedanPoupanca.GetSaldo())
+
+	contas.PagarBoleto(&gedanPoupanca, 20)
+
+	fmt.Println("Saldo", gedanPoupanca.GetSaldo())
+
+	gedanPoupanca.Depositar(1000)
+
+	contas.PagarBoleto(&gedanPoupanca, 300)
+
+	fmt.Println("Saldo", gedanPoupanca.GetSaldo())
+
+	fmt.Println("Pagamento conta corrente")
+
+	// Pagamento com conta corrente
+	contas.PagarBoleto(&contaGedan, 300)
+
+	fmt.Println("Saldo", contaGedan.GetSaldo())
+
 }
 
 // contaGedan := contas.ContaCorrente{}
