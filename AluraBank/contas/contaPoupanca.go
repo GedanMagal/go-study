@@ -1,7 +1,7 @@
 package contas
 
 import (
-	"aluraBank/pessoas/clientes"
+	"aluraBank/clientes"
 )
 
 type ContaPoupanca struct {

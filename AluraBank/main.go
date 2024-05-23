@@ -1,8 +1,8 @@
 package main
 
 import (
+	"aluraBank/clientes"
 	"aluraBank/contas"
-	"aluraBank/pessoas/clientes"
 	"fmt"
 )
 
